@@ -1,80 +1,40 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Spawner
 {
     public class Spawner : MonoBehaviour
     {
-        [SerializeField] private GameObject cube;
+        [SerializeField] private GameObject cubePrefab;
+        private Manager _manager;
+
+        
         private GameObject newCube = null;
-
-        [SerializeField] private UIManager uiManager;
-
         public int cubeCount;
 
-        #region Properties
-        // timeInterval, время, через которое спавнится новый куб
-        private float _interval;
-        public float Interval {
-            get => _interval;
-            set { _interval = value; }
-        }
-        // Скорость, с которой куб перемещается
-        private float _speed;
-        public float Speed {
-            get => _speed;
-            set { _speed = value; }
-        }
-        // Расстояние на которое передвигается
-        private float _distance;
-        public float Distance {
-            get => _distance;
-            set {
-                _distance = value; 
-                Debug.Log($"Distance: {value}");
-            }
-        }
-        #endregion
-        
 
         private void Start() {
-            if (cube != null || Distance != 0) {
-                SpawnNewCube();
-            }
-
-            if (uiManager != null) {
-                uiManager.OnInputChanged += ChangeValue;
-            }
+            _manager = Manager.Instance;
+            _manager.OnValueChanged += Reset;
+            Reset(TypeOfValue.Interval);
         }
-
-        private void ChangeValue(string type,float value) {
-            Debug.Log(type);
-            
-            if (type == "SpeedIF") {
-                Debug.Log($"Speed value in Spawner changed to {value}");
-                Speed = value;
-            }
-
-            if (type == "DistanceIF") Distance = value;
-        }
-
+        
         private void Update() {
-            if (newCube != null && newCube.transform.position.x < _distance) {
-                MoveCube();
-            }
-            else
-            {
-                Destroy(newCube);
-                SpawnNewCube();
+        }
+
+        private void Reset(TypeOfValue type) {
+            if (type == TypeOfValue.Interval) {
+                CancelInvoke("SpawnCube");
+                InvokeRepeating("SpawnCube",0,_manager.Interval);
             }
         }
 
-        private void SpawnNewCube() {
-            newCube = Instantiate(cube, transform.position, Quaternion.identity);
+        private void SpawnCube() {
+            Debug.Log($"Spawn Cube number: {cubeCount}");
             cubeCount++;
-        }
-
-        private void MoveCube() {
-            newCube.transform.Translate(Vector3.right*Time.deltaTime * _speed);
+            
+            
+            Instantiate(cubePrefab, transform.position, Quaternion.identity);
         }
     }
 }
