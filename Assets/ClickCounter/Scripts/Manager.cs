@@ -23,7 +23,6 @@ public class Manager : MonoBehaviour
         }
     }
     
-    
     public void Awake() {
         Instance = this;
         OnChangeClickCount += ShowInConsole;
