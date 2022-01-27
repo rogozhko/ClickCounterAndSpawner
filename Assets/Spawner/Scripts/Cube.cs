@@ -7,11 +7,11 @@ namespace Spawner
     public class Cube : MonoBehaviour
     {
         private Manager _manager;
-        private float distance;
+        // private float distance;
         
         void Start() {
             _manager = Manager.Instance;
-            distance = _manager.Distance;
+            // distance = _manager.Distance;
         }
         
         void Update() {

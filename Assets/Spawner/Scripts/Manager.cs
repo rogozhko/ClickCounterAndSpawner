@@ -54,6 +54,7 @@ namespace Spawner
         private void Awake() {
             Instance = this;
             
+            // Set start values
             Interval = 0.3f;
             Speed = 20;
             Distance = 25;
@@ -64,11 +65,6 @@ namespace Spawner
                 uiManager.OnInputChanged += ChangeValue;
             }
         }
-        
-        private void Update() {
-        
-        }
-        
         
         private void ChangeValue(string type,float value) {
             if (type == "SpeedIF") Speed = value;
