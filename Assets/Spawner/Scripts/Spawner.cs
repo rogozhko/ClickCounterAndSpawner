@@ -30,11 +30,11 @@ namespace Spawner
         }
 
         private void SpawnCube() {
-            Debug.Log($"Spawn Cube number: {cubeCount}");
-            cubeCount++;
-            
-            
-            Instantiate(cubePrefab, transform.position, Quaternion.identity);
+            if (_manager.Distance != 0) {
+                Debug.Log($"Spawn Cube number: {cubeCount}");
+                cubeCount++;
+                Instantiate(cubePrefab, transform.position, Quaternion.identity);
+            }
         }
     }
 }

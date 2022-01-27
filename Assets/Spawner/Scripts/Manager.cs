@@ -54,9 +54,9 @@ namespace Spawner
         private void Awake() {
             Instance = this;
             
-            Interval = 1;
-            Speed = 1;
-            Distance = 5;
+            Interval = 0.3f;
+            Speed = 20;
+            Distance = 25;
         }
         
         private void Start() {
