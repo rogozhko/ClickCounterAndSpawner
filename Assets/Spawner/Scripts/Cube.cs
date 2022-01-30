@@ -7,7 +7,8 @@ namespace Spawner
     public class Cube : MonoBehaviour
     {
         private Manager _manager;
-        // private float distance;
+        // private float distance; Можно сохранять дистанцию и не менять,
+        // но визуально как будто лучше всегда менять, когда в менеджере меняется
         
         void Start() {
             _manager = Manager.Instance;

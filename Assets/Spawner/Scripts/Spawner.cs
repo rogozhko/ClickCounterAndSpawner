@@ -7,9 +7,7 @@ namespace Spawner
     {
         [SerializeField] private GameObject cubePrefab;
         private Manager _manager;
-
         
-        private GameObject newCube = null;
         public int cubeCount;
 
 

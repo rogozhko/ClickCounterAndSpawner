@@ -14,6 +14,6 @@ public class IncreaseButton : MonoBehaviour
         _button.onClick.AddListener(AddCount);
     }
     private void AddCount() {
-        _manager.CLickCount++;
+        _manager.ClickCount++;
     }
 }

@@ -8,13 +8,12 @@ public delegate void ChangeClickCount();
 public class Manager : MonoBehaviour
 {
     public event ChangeClickCount OnChangeClickCount = null;
-
-    // Singleton для доступа к свойству ClickCount
+    
     public static Manager Instance { get; private set; }
 
 
     private int _clickCount;
-    public int CLickCount {
+    public int ClickCount {
         get => _clickCount;
         set
         {
@@ -29,7 +28,7 @@ public class Manager : MonoBehaviour
     }
 
     public void ShowInConsole() {
-        Debug.Log($"Change value {CLickCount}");
+        Debug.Log($"Change value {ClickCount}");
     }
 }
 

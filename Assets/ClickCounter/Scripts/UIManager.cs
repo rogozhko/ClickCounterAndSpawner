@@ -14,11 +14,10 @@ public class UIManager : MonoBehaviour
         _manager = Manager.Instance;
         _manager.OnChangeClickCount += SetUI;
     }
-
-    // Обработчик события
+    
     private void SetUI()
     {
         Debug.Log("Set UI");
-        uiText.text = $"Click count: {_manager.CLickCount}";
+        uiText.text = $"Click count: {_manager.ClickCount}";
     }
 }
